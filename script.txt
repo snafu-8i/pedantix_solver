@@ -1,0 +1,9 @@
+const mots = [...document.querySelectorAll('li')]; 
+const textes = mots.map(li => li.textContent.trim()); 
+const contenu = textes.join('\n'); 
+const blob = new Blob([contenu], { type: 'text/plain' }); 
+const link = document.createElement('a'); 
+link.href = URL.createObjectURL(blob); 
+link.download = 'A.txt'; 
+link.click(); 
+URL.revokeObjectURL(link.href);
